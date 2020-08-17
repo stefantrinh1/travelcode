@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { ThemeConsumer } from 'styled-components'
-import { theme } from '../../globalStyles'
+import React, { useState } from 'react'
+import { ThemeProvider } from 'styled-components'
+import { themeLight, themeDark } from '../../globalStyles'
+import GlobalStyles from '../../globalStyles'
 
 const defaultContext = {
   currentTheme: 'light',
@@ -10,28 +11,22 @@ const defaultContext = {
 const ThemeContext = React.createContext(defaultContext)
 const useTheme = () => React.useContext(ThemeContext)
 
-console.log(useTheme)
-const ThemeProvider = ({ children }) => {
+
+const ThemeContainer = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState('light')
 
-  useEffect(() => {
-    console.log(currentTheme)
-
-    return () => {}
-  })
-
-  const toggle = () => {
-    console.log('toggle hit')
+  const toggle = () => 
     currentTheme === 'light'
       ? setCurrentTheme('dark')
       : setCurrentTheme('light')
-  }
+  
 
   return (
-    <ThemeContext.Provider theme={theme} value={{ currentTheme, toggle }}>
+    <ThemeProvider theme={currentTheme === "dark" ? {...themeDark, toggle} : {...themeLight, toggle}}>
+       <GlobalStyles theme={currentTheme === "dark" ? {...themeDark, toggle} : {...themeLight, toggle}}/>
       {children}
-    </ThemeContext.Provider>
+    </ThemeProvider>
   )
 }
 
-export { ThemeProvider, ThemeContext, useTheme }
+export { ThemeContainer , ThemeContext, useTheme }

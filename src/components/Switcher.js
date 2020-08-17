@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useTheme } from './Themes/ThemeProvider'
-import styled from 'styled-components'
+import styled,{ThemeContext} from 'styled-components'
 import Switch from 'react-switch'
 
-export default function Switcher() {
-  const themeState = useTheme()
+export default function Switcher(props) {
+  const themeState = useContext(ThemeContext)
   const [toggleActive, setToggleActive] = useState(false)
-
-  useEffect(() => {
-    console.log(themeState)
-
-    return () => {}
-  })
 
   return (
     <Container>
