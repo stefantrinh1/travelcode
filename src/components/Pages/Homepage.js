@@ -37,7 +37,13 @@ export default function Homepage() {
 				style={{ padding: '1rem' }}
 				contentSwitch={false}
 			/>
-            <ShowcaseContentBlock images={[slide1,slide2,slide3,slide4]} />
+            <ShowcaseContentBlock 
+            images={[slide1,slide2,slide3,slide4]} 
+            title={"Find Your Next Adventure"}
+            subtitle={"Breath Taking Views and Memorable Experiences"}
+            text={"We share our travels and experiences for others to follow."}
+            ctaName={'Explore'}
+            />
 		</div>
 	);
 }
