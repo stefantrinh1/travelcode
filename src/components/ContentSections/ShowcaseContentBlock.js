@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Slider from '../General/Slider'
 
 export default function ShowcaseContentBlock({
 	title,
@@ -14,7 +15,7 @@ export default function ShowcaseContentBlock({
 	return (
 		<Container {...props}>
             <SliderContainer>
-            {/* <Slider images={images}/> */}
+            <Slider images={images}/>
 
 
             </SliderContainer>
